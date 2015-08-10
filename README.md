@@ -34,7 +34,9 @@ should pick the new hosts up automatically, no restart needed.  The
 Logstash configuration for FPing can be found in
 `logstash/conf.d/10-input-fping.conf` (input section) and
 `logstash/conf.d/20-filter-fping.conf` (filter section).  Feel free to
-adjust/change as necessary.
+adjust/change as necessary. **Note:** changing the Logstash
+configuration will require you to restart the container with
+`docker-compose restart`.
 
 ## EchoPing
 
@@ -60,6 +62,10 @@ for each target you want to monitor with echoping.
 
 You can adjust the Logstash filter for EchoPing targets in the
 `logstash/config/conf.d/20-filter-echoping.conf` file.
+
+**Note:** changing the Logstash configuration to add/adjust EchoPing
+targets will require you to restart the container with `docker-compose
+restart`.
 
 ## Kibana
 
