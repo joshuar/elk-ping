@@ -42,8 +42,7 @@ RUN dnf -q -y erase tar
 VOLUME ["/opt/elasticsearch/data","/opt/elasticsearch/config","/opt/elasticsearch/logs","/opt/elasticsearch/plugins","/etc/logstash","/var/log/logstash"]
 
 # Expose ports
-EXPOSE "5601/tcp"
-# "9200/tcp" "9300/tcp"
+EXPOSE "5601/tcp" "9200/tcp" "9300/tcp"
 
 # Supervisord config file for starting all services
 COPY supervisord.conf /etc/supervisord.conf
