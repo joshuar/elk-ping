@@ -1,0 +1,13 @@
+elk:
+  build: .
+  volumes:
+      - elasticsearch/config:/opt/elasticsearch/config
+      - elasticsearch/data:/opt/elasticsearch/data
+      - elasticsearch/logs:/opt/elasticsearch/logs
+      - elasticsearch/plugins:/opt/elasticsearch/plugins
+      - logstash/config:/etc/logstash
+      - logstash/logs:/var/log/logstash
+  ports:
+    - "5601:5601"
+    - "9200:9200"
+    - "9300:9300"

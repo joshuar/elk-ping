@@ -1,0 +1,4 @@
+elasticsearch/data
+elasticsearch/logs
+elasticsearch/plugins
+logstash/logs
