@@ -6,7 +6,7 @@
       "title": "Pings",
       "hits": 0,
       "description": "",
-      "panelsJSON": "[{\"id\":\"Hosts-with-RTT-from-0-to-20ms\",\"type\":\"visualization\",\"size_x\":6,\"size_y\":5,\"col\":1,\"row\":1},{\"id\":\"Hosts-with-RTT-from-20-to-40ms\",\"type\":\"visualization\",\"size_x\":6,\"size_y\":5,\"col\":7,\"row\":1},{\"id\":\"Hosts-with-RTT-from-40-to-60ms\",\"type\":\"visualization\",\"size_x\":6,\"size_y\":4,\"col\":1,\"row\":6},{\"id\":\"Hosts-with-RTT-from-60ms\",\"type\":\"visualization\",\"size_x\":6,\"size_y\":4,\"col\":7,\"row\":6}]",
+      "panelsJSON": "[{\"col\":1,\"id\":\"Hosts-with-RTT-from-0-to-20ms\",\"row\":1,\"size_x\":6,\"size_y\":5,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Hosts-with-RTT-from-20-to-40ms\",\"row\":6,\"size_x\":6,\"size_y\":5,\"type\":\"visualization\"},{\"col\":7,\"id\":\"World-Average-RTTs\",\"row\":1,\"size_x\":6,\"size_y\":5,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Average-RTT-by-Country\",\"row\":6,\"size_x\":6,\"size_y\":5,\"type\":\"visualization\"}]",
       "version": 1,
       "timeRestore": false,
       "kibanaSavedObjectMeta": {
@@ -84,6 +84,34 @@
       "version": 1,
       "kibanaSavedObjectMeta": {
         "searchSourceJSON": "{\"filter\":[],\"index\":\"logstash-*\",\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"rtt:[60 TO *]\",\"analyze_wildcard\":true}}}"
+      }
+    }
+  },
+  {
+    "_id": "World-Average-RTTs",
+    "_type": "visualization",
+    "_source": {
+      "title": "World Average RTTs",
+      "visState": "{\"type\":\"tile_map\",\"params\":{\"mapType\":\"Scaled Circle Markers\",\"isDesaturated\":true,\"heatMaxZoom\":16,\"heatMinOpacity\":0.1,\"heatRadius\":25,\"heatBlur\":15,\"heatNormalizeData\":true,\"addTooltip\":true},\"aggs\":[{\"id\":\"1\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"rtt\"}},{\"id\":\"2\",\"type\":\"geohash_grid\",\"schema\":\"segment\",\"params\":{\"field\":\"geoip.location\",\"autoPrecision\":true,\"precision\":2}}],\"listeners\":{}}",
+      "description": "",
+      "savedSearchId": "Pings",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Average-RTT-by-Country",
+    "_type": "visualization",
+    "_source": {
+      "title": "Average RTT by Country",
+      "visState": "{\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"smoothLines\":true,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":true,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"rtt\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"geoip.country_code2.raw\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "description": "",
+      "savedSearchId": "Pings",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
       }
     }
   }
