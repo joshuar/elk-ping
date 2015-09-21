@@ -3,11 +3,11 @@ FROM fedora:latest
 MAINTAINER Joshua Rich "joshua.rich@gmail.com"
 
 # Environment variables that set the versions and download URLs
-ENV ES_VERSION 1.7.1
+ENV ES_VERSION 1.7.2
 ENV ES_URL https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-$ES_VERSION.tar.gz
-ENV LS_VERSION 1.5.3
+ENV LS_VERSION 1.5.4
 ENV LS_URL https://download.elastic.co/logstash/logstash/logstash-$LS_VERSION.tar.gz
-ENV KIBANA_VERSION 4.1.1
+ENV KIBANA_VERSION 4.1.2
 
 # Install required packages for build/run
 RUN dnf -q -y --nogpgcheck install tar jre fping echoping supervisor && \
